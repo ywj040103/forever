@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情人节爱心特效</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: rgb(224, 27, 80);
+            background: url('./logo/小公主.jpg') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+        }
+        h1 {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            opacity: 0; /* 初始透明度 */
+            transition: opacity 4s ease; /* 渐显效果 */
+        }
+        .heart {
+            position: absolute;
+            top: -50px;
+            font-size: 24px;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        button {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            padding: 10px 20px;
+            cursor: pointer;
+            opacity: 0.7; /* 降低按钮透明度 */
+            border-radius: 15px; /* 圆角效果 */
+            background-color: rgba(255, 255, 255, 0); /* 背景颜色 */
+            transition: opacity 2s ease; /* 渐显效果 */
+            display: none; /* 初始隐藏按钮 */
+        }
+        #text {
+            color: darksalmon;
+            font-size: 25px;
+            max-height: 80vh; /* 最大高度为视口高度的80% */
+            overflow-y: auto;  /* 启用垂直滚动条 */
+            white-space: pre-wrap; /* 保留换行和空格 */
+            border: 2px solid rgba(224, 27, 119, 0); /* 边框颜色和透明度 */
+            padding: 30px 50px; /* 增加左右内边距 */
+            background-color: rgba(249, 249, 249, 0); /* 半透明背景颜色 */
+            display: none; /* 初始隐藏文本区域 */
+            position: absolute; /* 绝对定位 */
+            top: 50%; /* 向下移动 */
+            left: 50%;
+            transform: translate(-50%, -50%); /* 居中 */
+            border-radius: 10px; /* 边框圆角 */
+            width: calc(100% - 100px); /* 设置宽度，留出左右边距 */
+        }
+        #arrow {
+            position: absolute;
+            top: 53%; /* 箭头位置 */
+            left: 50%;
+            transform: translate(-50%, -100%); /* 使箭头位于按钮正下方 */
+            font-size: 20px; /* 箭头文字大小 */
+            color: rgb(244, 103, 169);
+            text-align: center;
+            opacity: 0; /* 初始透明度 */
+            transition: opacity 2s ease; /* 渐显效果时间增加 */
+            animation: jump 1s infinite; /* 跳动效果 */
+        }
+        @keyframes jump {
+            0%, 100% {
+                transform: translate(-50%, -100%) translateY(0);
+            }
+            50% {
+                transform: translate(-50%, -100%) translateY(-10px);
+            }
+        }
+        .arrow-up {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid rgb(244, 103, 169); /* 箭头颜色 */
+            margin: 0 auto; /* 居中 */
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="greeting">情人节快乐！</h1>
+    <button id="showTextButton">以下是写给小公主的一封信</button>
+    <div id="arrow">
+        <div class="arrow-up"></div>
+        点击这里
+    </div>
+    <div id="text"></div>
+
+    <script>
+        const text = `——可能我词不达意，但是，我真的爱你！
+可爱的小公主：
+    不知道为什么，给你写这封信的时候，我有一点紧张，一点安心，虽然以前我们写过好多好多信，每次给你写信，我都要字字斟酌，担心有什么话，让小公主不太开心，我也想了好多好多的话和你说，最后我只想说：“我真幸运！”。
+    幸运在最美好的年纪遇见你，幸运鸡鸣寺的樱花在新年盛开。
+    之前的我不爱和别人诉说自己的委屈，压力，虽然现在可能也还有点，当初的我认为我不配拥有别人的关心，更别说爱了。和你分开的一年，我很想你，我心里也有一点矛盾，希望你忘了我，又希望你能回来找我，我也不止一次想过，要不要去找回她呢，但是万一她已经忘了我呢……那一年，我想知道你过得好不好，每天看看抖音，虽然没加你的好友，但是确实最近常看推荐，看看你，我也就心安了。不知哪一天，我看见你谈恋爱了，我有七分不舍，三分释然，从那天以后，我渐渐的不在关注抖音你的视频，虽然我还是能刷到。我那一年过的不好，我知道，你也是，对不起！那时的我太自私，没有考虑你的感受。
+    除夕的晚上，你发信息给我，新年快乐，那时的我知道有人给我发信息，不是微信，我一手拿着鞭炮，一手拿着打火机，有那么一刻失神了，我也猜到，是你发的。点完鞭炮的我，回到自己的房间，虽说男儿有泪不轻弹，我关上门的时候，它却已经掉在了地板上。拿着手机，心里想着，好对不起你，万分愧疚，也在想要不要加她回来，万一她只是想说声新年快乐，不想再和你有交集了呢，但是，我还是忍不住，这一年，让我知道了，事只有做了，才会有结果，无论好坏。
+    你打电话给我的那一瞬间，我又哭了（我是不是爱哭鬼啊），听你说着你这一年的事情，我心里很不是滋味，也很开心，曾经那个小屁孩，已经一个人做了这么多事情了，真的很棒。也让我更加觉得自己不是人，当初为什么要丢下她，可是，时间不能倒流，唯有向前走。
+    小公主说自己的第一束花不是我送的，可是，我如果不和小公主说，小公主又怎么会知道我的第一束玫瑰，也不是小公主送的，但是，直到她已经谈了一个对象了，我也只回答了她，我没有想法，没有时间。不为别的，只因为你还在我心里。
+    过去的事，已经过去了，我也不知道，小公主能陪我多久。不要问我为什么还要和你在一起，因为我已经体验过一次，失去你的滋味。珍惜当下，努力变好，努力让小公主不要离开自己，才是我现在应该做的事情。山林从不向四季起誓，枯萎随缘。
+    我喜欢和小公主聊天，也许有些话会让我难受，让我多想，但是我觉得这些是有道理的，确实需要思考的事情。但也请小公主明白，我不会以爱的名义去约束你，你可以去做任何你喜欢，想做的事情，但我希望小公主在做任何事情前，都可以想起我，也不要觉得亏欠我什么，毕竟要说亏欠，我欠你的太多了，我知道你会觉得我给你花钱，你会想要回报我，我也是，但爱情不就是向对方索取吗，我需要你的情绪价值，需要你的时间陪我，需要你来理解我，帮助我，满足我，需要你关心我一辈子，所以爱是常觉亏欠，这也是相互的。我们谈的不只是恋爱，也是信任、忠诚、陪伴、和理解。
+    小公主总是问我，你为什么喜欢我。实话说，我不知道，我只知道，这是我的心决定的，嘴上回答不了，你在，我便心安。小公主又问，你喜欢我哪。其实，我见过许多漂亮的女孩子，也遇见过性格很好的女孩子，但无论我见过多少人，遇见过多少女孩子，你所给我的感觉在这个时间，是她们所替代不了的，你站在那里，就是我喜欢的模样。我们都是普通人，新鲜感是会过去的，有时候想和你说说话，却又没有话说，只好喊你一声，只为告诉你，这一刻，我很想你。有时候电话挂着，你不说话，我不说话，你我各自忙碌，也挺好的，想我了，叫我一声，我一直都在。
+    从你加我的那一刻起，我就想和你一直在一起，不顾冷暖，想给小公主做饭，想牵着小公主的手，走过无数个日夜，从朝阳到日暮，从夜晚到清晨，从校服到婚纱。我知道有些事无法预料，但是，我想和你一起努力。我可能有点小气，虽然我不说，但是，希望小公主理解，我心里也住着一个小孩，他幼稚，热情，黏人，有时还有点爱吃醋，但他只在和喜欢的人在一起时才出来。你的出现就是我今年最大的幸运，也希望是永远的幸运。
+    风有约，花不误，岁岁年年不相负，
+    落日与晚风，朝朝又暮暮。`;
+
+        let index = 0;
+
+        // 显示效果
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById("greeting").style.opacity = 1; // 显示标题
+            }, 2000); // 2秒后显示标题
+
+            setTimeout(() => {
+                document.getElementById("showTextButton").style.display = "block"; // 显示按钮
+                document.getElementById("showTextButton").style.opacity = 1; // 渐显按钮
+            }, 4000); // 4秒后显示按钮
+
+            setTimeout(() => {
+                document.getElementById("arrow").style.opacity = 1; // 显示箭头
+            }, 6000); // 6秒后显示箭头
+        };
+
+        document.getElementById("showTextButton").addEventListener("click", function() {
+            const textContainer = document.getElementById("text");
+            textContainer.style.display = "block"; // 显示文本区域
+            type(); // 开始打字
+            this.style.display = "none"; // 隐藏按钮
+            document.getElementById("greeting").style.display = "none"; // 隐藏标题
+            document.getElementById("arrow").style.display = "none"; // 隐藏箭头
+        });
+
+        function type() {
+            if (index < text.length) {
+                document.getElementById("text").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(type, 50); // 每50毫秒打一个字
+                createHearts(); // 在打字时生成爱心
+            }
+        }
+
+        function createHearts() {
+            const heartCount = 1; // 每次生成的爱心数量减少为1
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = '❤️'; // 使用爱心符号
+                const size = Math.random() * 20 + 20; // 随机大小
+                heart.style.fontSize = `${size}px`;
+                heart.style.left = `${Math.random() * window.innerWidth}px`;
+                heart.style.animationDuration = `${Math.random() * 2 + 3}s`; // 随机掉落时间
+
+                document.body.appendChild(heart);
+
+                heart.addEventListener('animationend', () => {
+                    heart.remove(); // 动画结束后移除爱心
+                });
+            }
+        }
+
+        setInterval(createHearts, 500); // 每500毫秒生成爱心
+    </script>
+</body>
+</html>
